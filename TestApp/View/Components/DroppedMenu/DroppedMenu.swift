@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DroppedMenu: View {
     
-    @State private var isOptionPresented: Bool = false
+    @State var isOptionPresented: Bool = false
     @Binding var selectedOption: DroppedMenuViewModel?
     
     let placeholder: String

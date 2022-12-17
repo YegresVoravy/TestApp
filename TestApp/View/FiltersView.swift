@@ -62,6 +62,7 @@ struct FiltersView: View {
                     .fontWeight(.semibold)
                 
                 DroppedMenu(selectedOption: self.$selctedPhone, placeholder: "Select phone", options: DroppedMenuViewModel.allPhones)
+                    
                 
                 Text("Price")
                     .padding(.horizontal)

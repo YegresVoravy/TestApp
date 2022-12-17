@@ -16,6 +16,7 @@ struct DetailsView: View {
     @State var colorIsSelected = 1
     @State var isSelectedMemory = 1
     @State var cartIsPresented = false
+    @State var inCart = 0
     
     var body: some View {
         VStack(alignment: .leading){
@@ -42,11 +43,27 @@ struct DetailsView: View {
                 Button {
                     cartIsPresented.toggle()
                 } label: {
-                    Image(systemName: "cart")
-                        .padding(9)
-                        .foregroundColor(.white)
-                        .background(Color("mainOrange"))
-                        .cornerRadius(10)
+                    ZStack(alignment: .topTrailing){
+                        Image(systemName: "cart")
+                            .padding(9)
+                            .foregroundColor(.white)
+                            .background(Color("mainOrange"))
+                            .cornerRadius(10)
+                            .padding(8)
+
+                        ZStack(alignment: .center){
+                            Circle()
+                                .frame(width: 20)
+                                .foregroundColor(.red)
+
+                            Text("\(inCart)")
+                                .font(.custom("helvetica", size: 10))
+                                .foregroundColor(.white)
+                            
+                        }
+
+                        
+                    }
                 }
                 
                 
@@ -235,6 +252,7 @@ struct DetailsView: View {
                 Button {
                     CartViewModel.shared.addToCart()
                     print(CartViewModel.shared.positions.count)
+                    inCart += 1
                 } label: {
                     HStack{
                         Text("Add to Cart")
@@ -262,7 +280,6 @@ struct DetailsView: View {
             .shadow(color: .gray.opacity(0.8), radius: 4)
             .padding(.horizontal)
         }
-
         .fullScreenCover(isPresented: $cartIsPresented, content: {
             CartView()
         })

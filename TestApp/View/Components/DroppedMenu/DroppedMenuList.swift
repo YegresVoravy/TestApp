@@ -24,10 +24,12 @@ struct DroppedMenuList: View {
                     
                 }
             }
+            .background(Color.white)
             
         }
         .frame(height: 200)
         .padding(.vertical, 5)
+        .foregroundColor(Color.white)
         .overlay {
             RoundedRectangle(cornerRadius: 5)
                 .stroke(.gray, lineWidth: 2)

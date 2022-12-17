@@ -18,18 +18,6 @@ struct HomestoreCell: View {
     
     var body: some View {
             
-            
-
-
-
-//                AsyncImage(url:URL(string:  homeStore.picture)){ image in
-//                    image.resizable()
-//                } placeholder: {
-//                    ProgressView()
-//                }
-//                .frame( height: screen.height * 0.3)
-//                .aspectRatio(contentMode: .fill)
-//                .offset(x: screen.width * 0.3, y: screen.height * 0.3)
         VStack(alignment: .leading, spacing: 10){
                         HStack{
                             Text("NEW")

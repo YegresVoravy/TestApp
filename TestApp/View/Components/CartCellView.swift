@@ -46,6 +46,7 @@ struct CartCellView: View {
                 } label: {
                     Image(systemName: "minus")
                         .foregroundColor(.white)
+                        .padding(5)
                 }
                 .padding(5)
                 .padding(.top, 5)

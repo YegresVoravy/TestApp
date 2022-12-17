@@ -13,7 +13,7 @@ struct MainView: View {
     @State var detailViewIsPresented = false
     @State var filtersIsOn = false
     @State var searchText = ""
-    
+    @State var cartIsPres = false
     
     let layout = [GridItem(.adaptive(minimum: screen.width / 2.4))]
     
@@ -250,15 +250,62 @@ struct MainView: View {
                 
                 
             }
-            LowerCell()
+            HStack(spacing: 35){
+                HStack{
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 5)
+                    Text("Explorer")
+                        .foregroundColor(.white)
+                        .font(.custom("helvetica", size: 10)).bold()
+                }
+                Button {
+                    cartIsPres.toggle()
+                } label: {
+                    ZStack(alignment: .topTrailing){
+                        Image(systemName: "cart")
+                            .padding(9)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(8)
+
+                        ZStack(alignment: .center){
+                            Circle()
+                                .frame(width: 20)
+                                .foregroundColor(.red)
+
+                            Text("\(CartViewModel.shared.positions.count )")
+                                .font(.custom("helvetica", size: 10))
+                                .foregroundColor(.white)
+                            
+                        }
+
+                        
+                    }
+                }
+                
+                
+                Image(systemName: "heart")
+                    .foregroundColor(.white)
+                Image(systemName: "person")
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical)
+            .background(Color("lowerCell"))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(.horizontal)
             
             Spacer()
             
         }
         .fullScreenCover(isPresented: $detailViewIsPresented) {
             DetailsView()
-            
         }
+        .fullScreenCover(isPresented: $cartIsPres) {
+            CartView()
+        }
+        
     }
 }
 
