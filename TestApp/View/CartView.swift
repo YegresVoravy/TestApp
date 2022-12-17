@@ -10,7 +10,7 @@ import SwiftUI
 struct CartView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @State var positionCount = 0
+    @State var positionCount: UInt = 0
     @State var fullCount = CartViewModel.shared.positions.count
     
     var body: some View {

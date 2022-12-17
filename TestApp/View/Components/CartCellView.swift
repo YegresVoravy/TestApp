@@ -41,8 +41,6 @@ struct CartCellView: View {
                 
                 Button {
                     count -= 1
-                    CartViewModel.shared.minusCount()
-                    print(CartViewModel.shared.addedCout)
                 } label: {
                     Image(systemName: "minus")
                         .foregroundColor(.white)
@@ -53,12 +51,8 @@ struct CartCellView: View {
                 
                 Text("\(count)")
                     .foregroundColor(.white)
-
-                
                 Button {
                     count += 1
-                    CartViewModel.shared.plusCount()
-                    print(CartViewModel.shared.addedCout)
                 } label: {
                     Image(systemName: "plus")
                         .foregroundColor(.white)

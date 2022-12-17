@@ -21,6 +21,6 @@ struct Product: Identifiable{
     let sd: String
     let ssd: String
     let urlImage: String
-    var count = 1
+    var count: Int
 }
 

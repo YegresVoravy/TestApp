@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class CartViewModel: ObservableObject{
@@ -17,12 +18,14 @@ class CartViewModel: ObservableObject{
     @Published var positions: [Product] = [Product]()
     
     
-    var addedCout = 0
+    var addedCout = 1
     var fullCost: Int {
 
+        
         var cost = 0
         for prod in positions{
-            cost += prod.price * prod.count
+            cost += prod.price * addedCout
+            if cost < 0 {cost = 0}
         }
         
         return cost
@@ -43,12 +46,19 @@ class CartViewModel: ObservableObject{
         positions.append(product)
     }
     
-    func plusCount(){
+    func plusCount(count: Int) -> Int{
         addedCout += 1
+        return addedCout
     }
     
-    func minusCount(){
+    func minusCount() -> Int{
+        guard addedCout > 0 else {
+            addedCout = 0
+            return addedCout
+        }
         addedCout -= 1
+        if addedCout < 0 { addedCout = 0}
+        return addedCout
     }
     
 }
