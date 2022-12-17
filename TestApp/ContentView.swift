@@ -14,7 +14,6 @@ struct ContentView: View {
     var body: some View {
         
             MainView()
-            .background(Color("mainGray"))
 
     }
 }

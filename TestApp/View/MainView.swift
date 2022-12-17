@@ -304,6 +304,7 @@ struct MainView: View {
             Spacer()
             
         }
+        .background(Color("mainGray"))
         .fullScreenCover(isPresented: $detailViewIsPresented) {
             DetailsView()
         }

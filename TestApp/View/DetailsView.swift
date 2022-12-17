@@ -19,7 +19,7 @@ struct DetailsView: View {
     @State var inCart = 0
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack{
             HStack{
                 Button {
                     presentationMode.wrappedValue.dismiss()
@@ -65,6 +65,7 @@ struct DetailsView: View {
                         
                     }
                 }
+                
                 
                 
             }
@@ -279,12 +280,17 @@ struct DetailsView: View {
             .cornerRadius(15)
             .shadow(color: .gray.opacity(0.8), radius: 4)
             .padding(.horizontal)
+            
+            Color("mainGray")
+                .edgesIgnoringSafeArea(.all)
         }
-        .padding().ignoresSafeArea()
-        .background(Color.white)
+        .padding()
+        .background(Color("mainGray"))
         .fullScreenCover(isPresented: $cartIsPresented, content: {
             CartView()
         })
+
+
 
         
     }
