@@ -153,7 +153,7 @@ struct DetailsView: View {
                             .foregroundColor(.gray)
                             .font(.custom("helvetica", size: 12))
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal,8)
                     
                     VStack{
                         Image(systemName: "camera")
@@ -163,7 +163,7 @@ struct DetailsView: View {
                             .foregroundColor(.gray)
                             .font(.custom("helvetica", size: 12))
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal,8)
                     
                     VStack{
                         Image(systemName: "memorychip")
@@ -183,7 +183,7 @@ struct DetailsView: View {
                             .foregroundColor(.gray)
                             .font(.custom("helvetica", size: 12))
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 8)
                     
                 }
                 .padding(.vertical, 8)
@@ -201,7 +201,7 @@ struct DetailsView: View {
                     } label: {
                         ZStack{
                             Circle()
-                                .frame(width: screen.width / 8)
+                                .frame(width: 50, height: 50)
                                 .foregroundColor(Color("lowerCell"))
                             Image(systemName: "checkmark")
                                 .foregroundColor(colorIsSelected == 1 ? .white : .clear)
@@ -214,7 +214,7 @@ struct DetailsView: View {
                     } label: {
                         ZStack{
                             Circle()
-                                .frame(width: screen.width / 8)
+                                .frame(width: 50, height: 50)
                                 .foregroundColor(Color.brown)
                             Image(systemName: "checkmark")
                                 .foregroundColor(colorIsSelected == 2 ? .white : .clear)
@@ -228,8 +228,7 @@ struct DetailsView: View {
                         Text("\(ProductViewModel.shared.cartProduct.capacity[0]) GB")
                             .font(.footnote)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 5)
+                    .padding(5)
                     .foregroundColor(isSelectedMemory == 1 ? .white : .gray)
                     .background(isSelectedMemory == 1 ? Color("mainOrange") : Color.clear )
                     .cornerRadius(5)
@@ -243,8 +242,7 @@ struct DetailsView: View {
                         Text("\(ProductViewModel.shared.cartProduct.capacity[1]) GB")
                             .font(.footnote)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 5)
+                    .padding(5)
                     .foregroundColor(isSelectedMemory == 2 ? .white : .gray)
                     .background(isSelectedMemory == 2 ? Color("mainOrange") : Color.clear )
                     .cornerRadius(5)
