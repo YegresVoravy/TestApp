@@ -280,6 +280,8 @@ struct DetailsView: View {
             .shadow(color: .gray.opacity(0.8), radius: 4)
             .padding(.horizontal)
         }
+        .padding().ignoresSafeArea()
+        .background(Color.white)
         .fullScreenCover(isPresented: $cartIsPresented, content: {
             CartView()
         })

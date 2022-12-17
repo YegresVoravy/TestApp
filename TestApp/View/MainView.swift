@@ -48,6 +48,7 @@ struct MainView: View {
             
             HStack{
                 Text("Select Category")
+                    .foregroundColor(Color("lowerCell"))
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -79,6 +80,7 @@ struct MainView: View {
                             }
                         }
                         Text("Phones")
+                            .foregroundColor(Color("lowerCell"))
                     }
                     
                     VStack{
@@ -95,6 +97,7 @@ struct MainView: View {
                             }
                         }
                         Text("Computers")
+                            .foregroundColor(Color("lowerCell"))
                     }
                     
                     VStack{
@@ -111,6 +114,7 @@ struct MainView: View {
                             }
                         }
                         Text("Health")
+                            .foregroundColor(Color("lowerCell"))
                     }
                     
                     VStack{
@@ -127,6 +131,7 @@ struct MainView: View {
                             }
                         }
                         Text("Books")
+                            .foregroundColor(Color("lowerCell"))
                     }
                 }
                 .padding()

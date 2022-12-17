@@ -141,6 +141,7 @@ struct CartView: View {
             
         }
         .padding()
+        .background(Color.white.ignoresSafeArea())
         
     }
 }
