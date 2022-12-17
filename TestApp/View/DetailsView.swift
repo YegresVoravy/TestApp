@@ -190,6 +190,7 @@ struct DetailsView: View {
                 
                 HStack{
                     Text("Select color and opacity")
+                        .foregroundColor(Color("lowerCell"))
                         .font(.title3)
                         .fontWeight(.semibold)
                     Spacer()
