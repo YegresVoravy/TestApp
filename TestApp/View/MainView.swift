@@ -192,10 +192,16 @@ struct MainView: View {
                 
                 switch changeView{
                 case .phones:
-                    ScrollView(.vertical, showsIndicators: true) {
-                        VStack{
-                            HomestoreCell()
+                    ScrollView(.horizontal , showsIndicators: false) {
+                        
+                        // MARK: Best Sellers
+                        HStack(spacing: 20){
+                            ForEach(HomeStoreViewModel.shared.homeStore, id: \.id){ item in
+                                
+                                HomestoreCell(homeStore: item)
+                            }
                         }
+                        .padding(.leading, 15)
 
                     }
                     if filtersIsOn == false{

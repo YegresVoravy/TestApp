@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomestoreCell: View {
     
-    let homeStore = HomeStoreViewModel.shared.homeStore
+    let homeStore: HomeStoreModel
     
     
     @State var currentHomeStorePage = 0
@@ -19,25 +19,42 @@ struct HomestoreCell: View {
     var body: some View {
             
             
-            VStack(alignment: .leading){
-                        Text("NEW")
-                            .padding(2)
-                            .frame(width: 30, height: 30)
-                            .font(.custom("helvetica", size: 8))
-                            .foregroundColor(.white).bold()
-                            .background(Color("mainOrange"))
-                            .cornerRadius(25)
 
-                
-                HStack{
-                    VStack(alignment: .leading){
-                        Text("\(homeStore[currentHomeStorePage].title)")
-                            .font(.custom("helvetica", size: 25)).bold()
-                            .foregroundColor(.white)
-                        Text("\(homeStore[currentHomeStorePage].subTitle)")
-                            .font(.custom("helvetica", size: 8))
-                            .foregroundColor(.white)
+
+
+//                AsyncImage(url:URL(string:  homeStore.picture)){ image in
+//                    image.resizable()
+//                } placeholder: {
+//                    ProgressView()
+//                }
+//                .frame( height: screen.height * 0.3)
+//                .aspectRatio(contentMode: .fill)
+//                .offset(x: screen.width * 0.3, y: screen.height * 0.3)
+        VStack(alignment: .leading, spacing: 10){
+                        HStack{
+                            Text("NEW")
+                                .padding(2)
+                                .frame(width: 30, height: 30)
+                                .font(.custom("helvetica", size: 8))
+                                .foregroundColor(.white).bold()
+                                .background(Color("mainOrange"))
+                                .cornerRadius(25)
+                            Spacer()
+                        }
+                        .padding(.top, 10)
                         Spacer()
+                        
+                        VStack{
+                            Text("\(homeStore.title)")
+                                .font(.headline).bold()
+                                .foregroundColor(.white)
+                            Text("\(homeStore.subTitle)")
+                                .font(.custom("helvetica", size: 8))
+                                .foregroundColor(.white)
+                        }
+                        
+                        Spacer()
+                        
                         Button {
                             print("Buy Now")
                         } label: {
@@ -46,57 +63,30 @@ struct HomestoreCell: View {
                                 .foregroundColor(.black).bold()
                         }
                         .padding(5)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal)
                         .background(Color.white)
-                        .cornerRadius(15)
+                        .cornerRadius(5)
+                        .padding(.bottom, 15)
 
                     }
-                    Spacer()
-                }
-            }
             .padding()
-            .frame(width: screen.width * 0.9, height: screen.height * 0.2)
-            .background(AsyncImage(url:URL(string:  homeStore[currentHomeStorePage].picture)){ image in
+            .frame(width: screen.width * 0.85, height: screen.height * 0.19)
+            .background(AsyncImage(url:URL(string:  homeStore.picture)){ image in
                 image.resizable()
             } placeholder: {
                 ProgressView()
-            })
+            }
+                .background(Color.black)
+            .aspectRatio(contentMode: .fill)
+            .frame(width: screen.width / 3, height: screen.height / 3)
+            .offset(x: 110, y: 110))
+            .padding()
+            .background(Color.black)
             .cornerRadius(15)
-            .offset(x: currentOffSetY * 1)
-            .offset(x: currentDrugOffSetY)
-            .gesture(
-                DragGesture()
-                    .onChanged({ value in
-                            guard currentDrugOffSetY >= 0 else {
-                                return currentDrugOffSetY = 0
-                            }
-                            guard currentHomeStorePage < (homeStore.count - 1) else {
-                                return currentHomeStorePage = 0
-                            }
-                            
-                            currentDrugOffSetY = value.translation.width
-                            currentHomeStorePage += 1
-                    })
-                    .onEnded({ value in
-                        withAnimation(.spring()) {
-                            
-                            currentDrugOffSetY = 0
-
-
-
-                        }
-
-                    })
-            )
+        
             Spacer()
 
     }
     
     
-}
-
-struct HomestoreCell_Previews: PreviewProvider {
-    static var previews: some View {
-        HomestoreCell()
-    }
 }
